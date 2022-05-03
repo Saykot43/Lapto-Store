@@ -1,0 +1,62 @@
+.logo{
+    text-decoration: none;
+    color: #fff;
+    font-size: 35px;
+    font-style: italic;
+    font-weight: 700;
+}
+.logout{
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    margin-right: 20px;
+    color: #111;
+    padding: 10px 20px;
+}
+.logout:hover{
+    border-radius: 20px;
+    background: #f91e48;
+}
+.logo:hover{
+    color: #fff;
+}
+.link, .active-link{
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    margin-right: 20px;
+    color: #111;
+    padding: 10px 20px;
+}
+.link:hover, .active-link:hover{
+    color: #fff;
+}
+.link:hover, .active-link{
+    border-radius: 20px;
+    background: #f91e48;
+}
+.out-btn{
+    padding: 10px 20px;
+    border: none;
+}
+
+@media only screen and (max-width:576px) {
+    .logo{
+        font-size: 15px;
+    }
+    .link, .active-link{
+        font-size: 10px;
+        margin-right: 5px;
+        padding: 5px 10px;
+    }
+}
+@media only screen and (min-width:577px) and (max-width:992px) {
+    .logo{
+        font-size: 20px;
+    }
+    .link, .active-link{
+        font-size: 15px;
+        margin-right: 5px;
+        padding: 5px 10px;
+    }
+}

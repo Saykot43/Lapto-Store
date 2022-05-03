@@ -1,0 +1,16 @@
+.product-card{
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
+    margin-bottom: 30px;
+}
+.button-link{
+    text-decoration: none;
+    border-radius: 5px;
+    background-color: aqua;
+    font-size: 20px;
+    font-weight: 600;
+    color: #f91e48;
+}
+.button-link:hover{
+    color: #111;
+    background-color: #f91e48;
+}

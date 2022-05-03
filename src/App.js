@@ -1,9 +1,40 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Footer from './Pages/Footer/Footer';
+import Header from './Pages/Header/Header';
+import Home from './Pages/Home/Home';
+import ProductAdd from './Pages/ProductAdd/ProductAdd';
+import ProductList from './Pages/ProductList/ProductList';
+import RequireAuth from './Pages/RequireAuth/RequireAuth';
+import Signin from './Pages/Signin/Signin';
+import Signup from './Pages/Signup/Signup'
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import NotFound from './Pages/NotFound/NotFound';
+import ProductDetail from './Pages/ProductDetail/ProductDetail';
+toast.configure()
 
 function App() {
   return (
-    <div className="App">
-      
+    <div>
+      <Header />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/login' element={<Signin />} />
+        <Route path='/register' element={<Signup />} />
+        <Route path='/productAdd' element={<RequireAuth>
+          <ProductAdd />
+        </RequireAuth>} />
+        <Route path='/productDetail/:id' element={<RequireAuth>
+          <ProductDetail />
+        </RequireAuth>} />
+        <Route path='/productList' element={<RequireAuth>
+          <ProductList />
+        </RequireAuth>} />
+        <Route path='*' element={<NotFound/>}/>
+      </Routes>
+      <Footer />
     </div>
   );
 }
