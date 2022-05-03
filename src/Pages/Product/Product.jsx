@@ -19,7 +19,7 @@ const Product = ({ product }) => {
                     </Card.Text>
                     <h1>$ {price}</h1>
                 </Card.Body>
-                <Link to="/productList" className='button-link py-2 text-center'>Manage</Link>
+                <Link to={_id} className='button-link py-2 text-center'>Manage</Link>
             </Card>
         </div>
     );
