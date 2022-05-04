@@ -26,13 +26,13 @@ function App() {
         <Route path='/productAdd' element={<RequireAuth>
           <ProductAdd />
         </RequireAuth>} />
-        <Route path='/productDetail/:id' element={<RequireAuth>
+        <Route path='/productDetail/:pd' element={<RequireAuth>
           <ProductDetail />
         </RequireAuth>} />
         <Route path='/productList' element={<RequireAuth>
           <ProductList />
         </RequireAuth>} />
-        <Route path='*' element={<NotFound/>}/>
+        {/* <Route path='*' element={<NotFound/>}/> */}
       </Routes>
       <Footer />
     </div>

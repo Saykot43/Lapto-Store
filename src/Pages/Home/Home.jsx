@@ -1,15 +1,13 @@
-
 import React, { useEffect, useState } from 'react';
 
-import { Link, useParams } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 import { CustomHook } from '../CustomHook/CustomHook';
 import Product from '../Product/Product'
 import Cover from './Cover';
 
 const Home = () => {
     const [products] = CustomHook([]);
-    const {id} =useParams();
+
     return (
         <div className='container'>
             <Cover />
@@ -25,7 +23,7 @@ const Home = () => {
                         }
                     </div>
                     <div className="mx-auto text-end">
-                        <Link to={`/productDetail/${id}`} className='btn btn text-white m-3 p-3 bg-danger border rounded-pill'>Product Inventory</Link>
+                        <Link to='/productList' className='btn btn text-white m-3 p-3 bg-danger border rounded-pill'>Product Inventory</Link>
                     </div>
                 </div>
             </section>

@@ -1,0 +1,15 @@
+.custom-size{
+    height: 100px;
+    width: 100px;
+}
+
+.delete-btn{
+ font-size: 30px;
+ color: brown;
+ margin-left: 5px;
+    
+}
+.edit-btn{
+    font-size: 30px;
+    color: rgb(243, 243, 86);
+}
