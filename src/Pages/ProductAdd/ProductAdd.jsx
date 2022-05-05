@@ -19,7 +19,7 @@ const ProductAdd = () => {
         toast('Product added succesfully')
         event.target.reset();
 
-        const url = `http://localhost:5000/productAdd`;
+        const url = `https://laptopstorebd.herokuapp.com/productAdd`;
         fetch(url, {
             method: 'POST',
             body: JSON.stringify({
@@ -30,7 +30,6 @@ const ProductAdd = () => {
             },
         })
             .then((response) => response.json())
-            // .then((json) => console.log(json));
             .then((json) => setProduct(json));
         toast('Product Added succesfully')
         // event.target.reset();
