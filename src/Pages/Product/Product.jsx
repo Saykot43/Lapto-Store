@@ -1,26 +1,33 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
-import { Link, useParams } from 'react-router-dom';
+import { Button, Card } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import './Product.css'
 
 const Product = ({ product }) => {
-    const { _id, name, des, img, quantity, price } = product;
-    const{pd}= useParams();
+    const { name, des, img, quantity, price, supplier } = product;
+    const navigate = useNavigate();
+
+    const manageNavigate =id=>{
+        navigate(`/productDetail/${id}`)
+    }
     return (
         <div className="g-5 col-sm-12 col-md-6 col-lg-3">
-            <Card style={{ width: '18rem' }} className='product-card h-100'>
+            <Card style={{ width: '18rem' }} className='product-card py-2 h-100'>
                 <Card.Img variant="top" src={img} />
                 <Card.Body>
-                    <Card.Title>{name}</Card.Title>
+                    <Card.Title>{name}</Card.Title><hr></hr>
                     <Card.Text>
-                        {des.slice(0, 200) + '...........'}
+                        {des}
                     </Card.Text>
                     <Card.Text>
                         <h5>Quantity: {quantity}</h5>
                     </Card.Text>
-                    <h1>$ {price}</h1>
+                    <Card.Text>
+                        <h5>Supplier: {supplier}</h5>
+                    </Card.Text>
+                    <h3>$ {price}</h3>
                 </Card.Body>
-                <Link to={`/productDetail/${pd}`} className='button-link py-2 text-center'>Manage</Link>
+                <Button onClick={()=>manageNavigate(product._id)} className='button-link py-2 text-center'>Manage</Button>
             </Card>
         </div>
     );

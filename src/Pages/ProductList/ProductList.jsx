@@ -11,10 +11,12 @@ const ProductList = () => {
             <Table striped bordered hover variant="light">
                 <thead>
                     <tr>
+                        <th>Account Holder Name</th>
                         <th>Name</th>
                         <th>Quantity</th>
                         <th>Image</th>
                         <th>Price</th>
+                        <th>Supplier</th>
                         <th>Action</th>
                     </tr>
                 </thead>

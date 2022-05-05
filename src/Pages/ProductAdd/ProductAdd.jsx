@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import './ProductAdd.css'
 
 const ProductAdd = () => {
+    const [product, setProduct] = useState([]);
+    const navigate = useNavigate();
 
     const handleUpload = (event) => {
         event.preventDefault();
@@ -11,6 +14,7 @@ const ProductAdd = () => {
         const img = event.target.img.value;
         const des = event.target.des.value;
         const quantity = event.target.quantity.value;
+        const supplier = event.target.supplier.value;
         const price = event.target.price.value;
         toast('Product added succesfully')
         event.target.reset();
@@ -19,14 +23,18 @@ const ProductAdd = () => {
         fetch(url, {
             method: 'POST',
             body: JSON.stringify({
-                name, img, des, quantity, price
+                name, img, des, quantity, supplier, price
             }),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
             },
         })
             .then((response) => response.json())
-            .then((json) => console.log(json));
+            // .then((json) => console.log(json));
+            .then((json) => setProduct(json));
+        toast('Product Added succesfully')
+        // event.target.reset();
+        navigate('/productList');
     }
     return (
         <div>
@@ -55,11 +63,15 @@ const ProductAdd = () => {
 
                                         <Form.Group className="mb-3" controlId="formBasicPassword">
                                             <Form.Label>Descriptions</Form.Label>
-                                            <Form.Control type="text" name='des' placeholder="Descriptions" required />
+                                            <Form.Control as="textarea" rows={3} type="text" name='des' placeholder="Descriptions" required />
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="formBasicQuantity">
                                             <Form.Label>Quantity</Form.Label>
                                             <Form.Control type="text" name='quantity' placeholder="Quantity" required />
+                                        </Form.Group>
+                                        <Form.Group className="mb-3" controlId="formBasicSupplier">
+                                            <Form.Label>Supplier</Form.Label>
+                                            <Form.Control type="text" name='supplier' placeholder="Supplier" required />
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="formBasicPrice">
                                             <Form.Label>Price</Form.Label>

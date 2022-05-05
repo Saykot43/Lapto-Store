@@ -12,6 +12,8 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NotFound from './Pages/NotFound/NotFound';
 import ProductDetail from './Pages/ProductDetail/ProductDetail';
+import Blog from './Pages/Blog/Blog';
+import EditProduct from './Pages/EditProduct/EditProduct';
 toast.configure()
 
 function App() {
@@ -23,16 +25,20 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/login' element={<Signin />} />
         <Route path='/register' element={<Signup />} />
+        <Route path='/blog' element={<Blog />} />
         <Route path='/productAdd' element={<RequireAuth>
           <ProductAdd />
         </RequireAuth>} />
-        <Route path='/productDetail/:pd' element={<RequireAuth>
+        <Route path='/productDetail/:id' element={<RequireAuth>
           <ProductDetail />
+        </RequireAuth>} />
+        <Route path='/editProduct/:id' element={<RequireAuth>
+          <EditProduct />
         </RequireAuth>} />
         <Route path='/productList' element={<RequireAuth>
           <ProductList />
         </RequireAuth>} />
-        {/* <Route path='*' element={<NotFound/>}/> */}
+        <Route path='*' element={<NotFound/>}/>
       </Routes>
       <Footer />
     </div>
