@@ -16,9 +16,6 @@ const ProductAdd = () => {
         const quantity = event.target.quantity.value;
         const supplier = event.target.supplier.value;
         const price = event.target.price.value;
-        toast('Product added succesfully')
-        event.target.reset();
-
         const url = `https://laptopstorebd.herokuapp.com/productAdd`;
         fetch(url, {
             method: 'POST',
