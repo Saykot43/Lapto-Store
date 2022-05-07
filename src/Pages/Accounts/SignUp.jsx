@@ -1,30 +1,29 @@
-import { getRedirectResult, GoogleAuthProvider, signInWithPopup, signInWithRedirect } from 'firebase/auth';
-import { useRef } from 'react';
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { GoogleAuthProvider, sendEmailVerification, signInWithPopup } from 'firebase/auth';
+import React from 'react';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../Firebase/firebase.init';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import './Signin.css';
+import './Signup.css';
 
-const Signin = () => {
-
+const Signup = () => {
     // google authentication///////////////////////////////////////
 
     const provider = new GoogleAuthProvider();
-    
     const handleGoogle = () => {
         
         signInWithPopup(auth, provider)
         .then((result) => {
-            
+            // This gives you a Google Access Token. You can use it to access the Google API.
             const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
             const user = result.user;
+            // ...
             if (user) {
                 navigate(from, {replace: true});
             }
-            
         }).catch((error) => {
+            // Handle Errors here.
             const errorCode = error.code;
             const errorMessage = error.message;
             // The email of the user's account used.
@@ -37,88 +36,78 @@ const Signin = () => {
     }
     /////////////////////////////////////////////////////////////////////////
     
-    // email authentication ////////////////////////////////////////////////
+
+    // email authentication  /////////////////////////////
     const [
-        signInWithEmailAndPassword,
-        user,
-        loading,
-        error,
-      ] = useSignInWithEmailAndPassword(auth);
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    error,
+    ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
 
-      const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
-      const navigate = useNavigate();
-
-    const emailRef = useRef('');
-    const passwordRef = useRef('');
+    const navigate = useNavigate()
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
-    let errorElement;
+
     if (user) {
         navigate(from, {replace: true});
     }
-    if (error) {
-         errorElement = <p className='text-danger fw-bold'>Error: {error?.message}</p>;  
-    }
 
-    const handleSignin = event => {
+    const handleSignup = event => {
         event.preventDefault();
-        const email = emailRef.current.value;
-        const password = passwordRef.current.value;
+        const name = event.target.name.value;
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        
 
-        signInWithEmailAndPassword(email, password);
-
+        createUserWithEmailAndPassword(name, email, password);
+        
     }
-    const resetPassword = async() => {
-        const email = emailRef.current.value;
-        await sendPasswordResetEmail(email);
-          toast('Sent email');
-    }
-    /////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////
 
     return (
         <div>
            <div className='auth-form-container '>
             <div className='auth-form'>
-                <h1 className='py-2'>Sign in Here</h1>
-                <form onSubmit={handleSignin}>
+                <h1 className='py-2'>Sign up Here</h1>
+                <form onSubmit={handleSignup}>
                     <div className='input-field'>
                         <div className='input-wrapper'>
-                        <input ref={emailRef} type='email' name='email' id='email' placeholder='Enter your email' required/>
+                        <input type='text' name='name' id='name' placeholder='Enter your Name' required/>
                         </div>
                     </div>
                     <div className='input-field'>
                         <div className='input-wrapper'>
-                            <input ref={passwordRef} type='password' name='password' id='password' placeholder='Enter your password' required/>
+                        <input type='email' name='email' id='email' placeholder='Enter your email' required/>
+                        </div>
+                    </div>
+                    <div className='input-field'>
+                        <div className='input-wrapper'>
+                            <input type='password' name='password' id='password' placeholder='Enter your password' required/>
                         </div>
                     </div>
                     <button type='submit' className='auth-form-submit'>
-                        Login
+                        Register
                     </button>
                 </form>
                 <p className='redirect'>
-                    New to this website ? 
-                    <Link to="/register" className='account-link'> Create New Account</Link>
+                    Already have an account ? 
+                    <Link to="/login" className='account-link'> Sign in</Link>
                 </p>
-                <div className='d-flex align-items-center justify-content-center'>
-                    <p className="redirect ">Forget password?</p>
-                    <p onClick={resetPassword} className="reset text-primary mt-2 ps-2">Reset password</p>
-                </div>
                 <div className='horizontal-divider'>
                     <div className='line-left' />
                     <p>OR</p>
                     <div className='line-right' />
                 </div>
-                {errorElement}
                 <div className='input-wrapper'>
                     <button className='google-auth' onClick={handleGoogle}>
                         <p>Continue with Google</p>
                     </button>
                 </div>
             </div>
-            <ToastContainer />
         </div> 
         </div>
     );
 };
 
-export default Signin;
+export default Signup;

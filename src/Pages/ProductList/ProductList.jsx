@@ -11,7 +11,7 @@ const ProductList = () => {
             <Table striped bordered hover variant="light">
                 <thead>
                     <tr>
-                        <th>Account Holder Name</th>
+                        
                         <th>Name</th>
                         <th>Quantity</th>
                         <th>Image</th>

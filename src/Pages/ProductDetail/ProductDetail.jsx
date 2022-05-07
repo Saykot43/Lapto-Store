@@ -8,21 +8,27 @@ const ProductDetail = () => {
     const { id } = useParams();
     
     const [product, setProduct] = SingleHookProduct(id);
+    
 
     const handelDelivery = () => {
-        const newQuantity = parseInt(product.quantity) - 1;
+
+        const newQuantity = product.quantity - 1;
+       const count = {newQuantity}
         
         fetch(`https://laptopstorebd.herokuapp.com/update/${id}`, {
             method: 'PUT',
             body: JSON.stringify({
-                newQuantity
+                count
             }),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
             },
         })
             .then((response) => response.json())
-            .then((data) => setProduct(data));
+            .then((data) => {
+                console.log(data);
+                
+            });
     }
     return (
         <div className='container text-center'>
@@ -43,7 +49,9 @@ const ProductDetail = () => {
                     <Card.Text>
                         <p>Price: {product.price} $</p>
                     </Card.Text>
+                    <form onS>
                     <Button onClick={() => handelDelivery(id)} className='text-center' variant="primary">Deliviery</Button>
+                    </form>
                 </Card.Body>
             </Card>
             </div>

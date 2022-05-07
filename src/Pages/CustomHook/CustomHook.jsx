@@ -8,7 +8,7 @@ export const CustomHook = () => {
         fetch('https://laptopstorebd.herokuapp.com/produts')
             .then(res => res.json())
             .then(data => setProducts(data));
-    }, [isReload])
+    }, [])
     return [products, setProducts];
 }
 

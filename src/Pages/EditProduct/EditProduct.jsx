@@ -23,7 +23,7 @@ const EditProduct = () => {
         const name = event.target.name.value;
         const img = event.target.img.value;
         const des = event.target.des.value;
-        const quantity = event.target.quantity.value;
+        // const quantity = event.target.quantity.value;
         const supplier = event.target.supplier.value;
         const price = event.target.price.value;
 
@@ -34,7 +34,7 @@ const EditProduct = () => {
         fetch(url, {
             method: 'PUT',
             body: JSON.stringify({
-                name, img, des, quantity, supplier, price
+                name, img, des, supplier, price
             }),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -83,14 +83,7 @@ const EditProduct = () => {
         setProduct(newSupp);
 
     }
-    const Quantity = (e) => {
-
-        const {quantity, ...rest}= product;
-        const newQun = e.target.value;
-        const newQuanti = {quantity: newQun, ...rest};
-        setProduct(newQuanti);
-
-    }
+    
     const Price = (e) => {
 
         const {price, ...rest}= product;
@@ -129,10 +122,10 @@ const EditProduct = () => {
                                             <Form.Label>Descriptions</Form.Label>
                                             <Form.Control as="textarea" rows={3} type="text" name='des' onChange={Des} value={product.des} placeholder="Descriptions" required />
                                         </Form.Group>
-                                        <Form.Group className="mb-3" controlId="formBasicQuantity">
+                                        {/* <Form.Group className="mb-3" controlId="formBasicQuantity">
                                             <Form.Label>Quantity</Form.Label>
                                             <Form.Control type="number" name='quantity' onChange={Quantity} value={product.quantity} placeholder="Quantity" required />
-                                        </Form.Group>
+                                        </Form.Group> */}
                                         <Form.Group className="mb-3" controlId="formBasicSupplier">
                                             <Form.Label>Supplier</Form.Label>
                                             <Form.Control type="text" name='supplier' onChange={Sup} value={product.supplier} placeholder="Supplier" required />

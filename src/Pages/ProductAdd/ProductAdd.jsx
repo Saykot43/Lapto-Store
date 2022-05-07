@@ -1,21 +1,27 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import auth from '../../Firebase/firebase.init';
 import './ProductAdd.css'
 
 const ProductAdd = () => {
     const [product, setProduct] = useState([]);
     const navigate = useNavigate();
-
+    const [user] = useAuthState(auth);
+    console.log(user);
     const handleUpload = (event) => {
         event.preventDefault();
+        const email = event.target.email.value;
         const name = event.target.name.value;
         const img = event.target.img.value;
         const des = event.target.des.value;
         const quantity = event.target.quantity.value;
         const supplier = event.target.supplier.value;
         const price = event.target.price.value;
+        const item = {email, name, img, des, quantity, supplier, price};
         const url = `https://laptopstorebd.herokuapp.com/productAdd`;
         fetch(url, {
             method: 'POST',
@@ -27,7 +33,12 @@ const ProductAdd = () => {
             },
         })
             .then((response) => response.json())
-            .then((json) => setProduct(json));
+            .then((data) => setProduct(data));
+            const urlItem='http://localhost:5000/item';
+            axios.post(urlItem, item)
+            .then(response => {
+                console.log(response);
+            })
         toast('Product Added succesfully')
         // event.target.reset();
         navigate('/productList');
@@ -48,6 +59,10 @@ const ProductAdd = () => {
                                 <h3 className="register-heading">Add New Product</h3>
                                 <div className="row register-form">
                                     <Form onSubmit={handleUpload}>
+                                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                                            <Form.Label>Email</Form.Label>
+                                            <Form.Control type="email" name='email' value={user.email} placeholder="Enter product name" readOnly required />
+                                        </Form.Group>
                                         <Form.Group className="mb-3" controlId="formBasicEmail">
                                             <Form.Label>Product Name</Form.Label>
                                             <Form.Control type="text" name='name' placeholder="Enter product name" required />

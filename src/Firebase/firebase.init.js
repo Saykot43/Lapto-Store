@@ -1,17 +1,14 @@
 import { getAuth } from "firebase/auth"; 
- // Import the functions you need from the SDKs you need
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC2b9hHQRdaoziWgLSY5GElu27fP6Hie6o",
-  authDomain: "laptop-store-63bf2.firebaseapp.com",
-  projectId: "laptop-store-63bf2",
-  storageBucket: "laptop-store-63bf2.appspot.com",
-  messagingSenderId: "159597671427",
-  appId: "1:159597671427:web:5d90faafec29ed6cbbca36"
+  apiKey: "AIzaSyA03uTqK7W0HqyvQLEeVd8HyKcZIEB0J_Y",
+  authDomain: "laptop-store-2d59d.firebaseapp.com",
+  projectId: "laptop-store-2d59d",
+  storageBucket: "laptop-store-2d59d.appspot.com",
+  messagingSenderId: "29279803386",
+  appId: "1:29279803386:web:e80342195cf8c7089ab643"
 };
 
 // Initialize Firebase
