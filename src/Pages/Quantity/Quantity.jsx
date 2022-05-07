@@ -8,7 +8,7 @@ const Quantity = () => {
     const [product, setProduct] = SingleHookProduct(id);
 
     const ReStock = e => {
-        const quantity = parseInt(e.target.reStock.value) + product.quantity;
+        const quantity = parseInt(e.target.reStock.value) + parseInt(product.quantity);
 
         const updateRestock = { quantity };
         // console.log(updateRestock);
