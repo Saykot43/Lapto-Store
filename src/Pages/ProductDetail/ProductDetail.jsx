@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Form } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import { SingleHookProduct } from '../CustomHook/SingleHookProduct';
 import './ProductDetail.css'
 
 const ProductDetail = () => {
     const { id } = useParams();
     
-    const [product, setProduct] = useState({});
-    useEffect(() => {
-        const url = `https://laptopstorebd.herokuapp.com/product/${id}`
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setProduct(data));
-    }, []);
+    const [product, setProduct] = SingleHookProduct(id);
 
     const handelDelivery = () => {
         const newQuantity = parseInt(product.quantity) - 1;
@@ -27,10 +22,10 @@ const ProductDetail = () => {
             },
         })
             .then((response) => response.json())
-            .then((json) => setProduct(json));
+            .then((data) => setProduct(data));
     }
     return (
-        <div className='container text-center my-3 d-flex '>
+        <div className='container text-center'>
             <div>
             <Card className='mx-auto' style={{ width: '20rem' }}>
                 <Card.Img className='pt-3' variant="top" src={product.img} />
@@ -51,13 +46,6 @@ const ProductDetail = () => {
                     <Button onClick={() => handelDelivery(id)} className='text-center' variant="primary">Deliviery</Button>
                 </Card.Body>
             </Card>
-            </div>
-            <div className='m-5'>
-                <Form>
-                    <h3>Stock Manage</h3>
-                    <input type='text' name='' />
-                    
-                </Form>
             </div>
         </div>
     );

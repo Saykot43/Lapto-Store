@@ -131,7 +131,7 @@ const EditProduct = () => {
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="formBasicQuantity">
                                             <Form.Label>Quantity</Form.Label>
-                                            <Form.Control type="text" name='quantity' onChange={Quantity} value={product.quantity} placeholder="Quantity" required />
+                                            <Form.Control type="number" name='quantity' onChange={Quantity} value={product.quantity} placeholder="Quantity" required />
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="formBasicSupplier">
                                             <Form.Label>Supplier</Form.Label>

@@ -1,9 +1,40 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { FaMotorcycle, FaAccusoft, FaEnvelope, FaMobileAlt } from "react-icons/fa";
+import './Footer.css'
 
 const Footer = () => {
     return (
-        <div className='text-center py-4 bg-dark text-white position-relative fixed-bottom container'>
-            <h5>Copyrights &copy; belongs to <span className='text-danger fst-italic fw-bold'>--Laptop Store--</span> {new Date().getFullYear()}</h5>
+        <div className="footer pt-5">
+            <div className="container ">
+                <div className="row justify-content-around">
+                    <div className="col-md-4">
+                        <ul>
+                            <li><FaMotorcycle /> Laptop Store</li>
+                            <li><FaAccusoft /> Multiplan ,Dhaka 1207</li>
+                            <li><FaEnvelope /> laptopstore@gmail.com</li>
+                            <li><FaMobileAlt /> 018xxxxxxxx</li>
+                        </ul>
+                    </div>
+                    <div className="col-md-2">
+                        <ul>
+                            <li><Link to="/contact" className='footer-link'>Contact</Link></li>
+                            <li><Link to="/about" className='footer-link'>About</Link></li>
+                            <li><Link to="/privacy" className='footer-link'>Privacy</Link></li>
+                            <li><Link to="/terms" className='footer-link'>Terms</Link></li>
+                        </ul>
+                    </div>
+                    <div className="col-md-2">
+                        <ul>
+                            <li><Link to="/" className='footer-link'>Media</Link></li>
+                            <li><Link to="/blog" className='footer-link'>Blog</Link></li>
+                            <li><Link to="/" className='footer-link'>Forums</Link></li>
+                        </ul>
+                    </div>
+                </div>
+                <h4 className='text-primary py-2 text-center'>All rights &copy; belongs to <span className='text-white'>
+                <FaMotorcycle /> BikeHaat {new Date().getFullYear()}</span></h4>
+            </div>
         </div>
     );
 };

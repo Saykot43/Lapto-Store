@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { CustomHook } from '../CustomHook/CustomHook';
 import Product from '../Product/Product'
 import Cover from './Cover';
+import Subscribe from './Subscribe';
 
 const Home = () => {
     const [products] = CustomHook([]);
@@ -27,6 +28,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+            <Subscribe />
         </div>
     );
 };
