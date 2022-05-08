@@ -77,7 +77,7 @@ const Signin = () => {
         /////////////////////////////////////////////////////////////////////////
 
         return (
-            <div>
+            <div className='container'>
                 <div className='auth-form-container '>
                     <div className='auth-form'>
                         <h1 className='py-2'>Sign in Here</h1>

@@ -26,7 +26,8 @@ const AddedItems = () => {
     return (
         <div>
             <h2 className='py-3 text-center text-primary'>Total items: {items.length}</h2>
-            <Table striped bordered hover variant="dark" className='container'>
+            <div className="container table-responsive">
+            <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -53,6 +54,7 @@ const AddedItems = () => {
                     )
                 }
             </Table>
+            </div>
         </div>
     );
 };

@@ -7,7 +7,7 @@ import './ProductList.css';
 const ProductList = () => {
     const [products] = CustomHook([]);
     return (
-        <div className='container'>
+        <div className='container table-responsive'>
             <Table striped bordered hover variant="light">
                 <thead>
                     <tr>
