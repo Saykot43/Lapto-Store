@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Card, Col, Form, FormLabel, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { SingleHookProduct } from '../CustomHook/SingleHookProduct';
 
 const Quantity = () => {
@@ -28,6 +29,7 @@ const Quantity = () => {
             .then(response => response.json())
             .then(data => {
                 e.target.reset();
+                toast('Restok success')
                 console.log(data);
 
             });
@@ -52,6 +54,7 @@ const Quantity = () => {
             .then(response => response.json())
             .then(data => {
                 // setProducts(data)
+                toast('Product Deliverd Success')
                 console.log(data);
 
             });
