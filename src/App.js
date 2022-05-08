@@ -17,9 +17,10 @@ import EditProduct from './Pages/EditProduct/EditProduct';
 import Quantity from './Pages/Quantity/Quantity';
 import ViewProduct from './Pages/ViewProduct/ViewProduct';
 import AddedItems from './Pages/AddedItems/AddedItems';
-import SignIn from './Pages/Accounts/SignIn'
-import SignUp from './Pages/Accounts/SignUp'
+
 import About from './Pages/About/About';
+import Signin from './Pages/Signin/Signin';
+import Signup from './Pages/Signup/Signup.js'
 toast.configure()
 
 function App() {
@@ -30,8 +31,9 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
         <Route path='/about' element={<About />} />
-        <Route path='/login' element={<SignIn />} />
-        <Route path='/register' element={<SignUp />} />
+        <Route path='/login' element={<Signin />} />
+        {/* <Route path='/register' element={<Sign} /> */}
+        <Route path='/register' element={<Signup/>} />
         <Route path='/blog' element={<Blog />} />
         <Route path='/productAdd' element={<RequireAuth>
           <ProductAdd />
