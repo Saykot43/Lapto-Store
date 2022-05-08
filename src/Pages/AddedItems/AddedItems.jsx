@@ -16,7 +16,11 @@ const AddedItems = () => {
         const getItems = async () => {
             const email = user?.email;
             const url = `https://laptopstorebd.herokuapp.com/item?email=${email}`;
-            const { data } = await axios.get(url);
+            const { data } = await axios.get(url, {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                }
+             });
             console.log(data);
             setItems(data)
                
