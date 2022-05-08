@@ -64,7 +64,7 @@ const Quantity = () => {
     return (
         <div className="container">
             <div className="row">
-                <div className="col-7">
+                <div className="col-lg-7 col-md-4">
                     <div className=' p-5'>
                         <h4>Update Quantity</h4>
                         <Form onSubmit={ReStock} className='d-flex'>
@@ -75,7 +75,7 @@ const Quantity = () => {
                         </Form>
                     </div>
                 </div>
-                <div className="col-5">
+                <div className="col-lg-5 col-md-8">
                     <Card className='mx-auto' style={{ width: '20rem' }}>
                         <Card.Img className='pt-3' variant="top" src={product.img} />
                         <Card.Body>
