@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import { CustomHook } from '../CustomHook/CustomHook';
+
 import Product from '../Product/Product'
 import Cover from './Cover';
+import Map from './Map/Map';
 import Subscribe from './Subscribe';
 
 const Home = () => {
@@ -29,6 +31,9 @@ const Home = () => {
                 </div>
             </section>
             <Subscribe />
+            <section>
+                <Map />
+            </section>
         </div>
     );
 };

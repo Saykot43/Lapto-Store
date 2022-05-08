@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { SingleHookProduct } from '../CustomHook/SingleHookProduct';
+// import { SingleHookProduct } from '../CustomHook/SingleHookProduct';
+import {Single} from '../CustomHook/Single';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 import './EditProduct.css'
@@ -12,7 +13,8 @@ import auth from '../../Firebase/firebase.init';
 const EditProduct = () => {
     const [data, setData] = useState([]);
     const { id } = useParams();
-    const [product, setProduct] = SingleHookProduct(id);
+    // const [product, setProduct] = SingleHookProduct(id);
+    const [product, setProduct ] = Single(id)
     const [user] = useAuthState(auth);
     console.log(user);
     const navigate = useNavigate();
@@ -52,7 +54,6 @@ const EditProduct = () => {
     }
 
     const Name = (e) => {
-
         const {name, ...rest}= product;
         const newName = e.target.value;
         const newProduct = {name: newName, ...rest};

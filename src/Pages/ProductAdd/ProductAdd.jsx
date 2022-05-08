@@ -34,7 +34,7 @@ const ProductAdd = () => {
         })
             .then((response) => response.json())
             .then((data) => setProduct(data));
-            const urlItem='http://localhost:5000/item';
+            const urlItem='https://laptopstorebd.herokuapp.com/item';
             axios.post(urlItem, item)
             .then(response => {
                 console.log(response);

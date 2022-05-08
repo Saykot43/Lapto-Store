@@ -4,7 +4,7 @@ const Blog = () => {
     return (
         <div className='container'>
             <div className="ques my-4">
-                <h3 className='text-danger bg-warning p-4'>1. Difference between javascript and node js ?</h3>
+                <h3 className='text-white bg-success p-4'>1. Difference between javascript and node js ?</h3>
                 <div className="ans bg-info p-4">
                     <p>Javascript is a programming language that is used for writing scripts on the website.Javascript can only be run in the browsers.It is basically used on the client-side.Javascript is used in frontend development.</p>
                     <p>NodeJS is a Javascript runtime environment.We can run Javascript outside the browser with the help of NodeJS.It is mostly used on the server-side.Nodejs is used in server-side development.</p>

@@ -11,24 +11,15 @@ const AddedItems = () => {
     const [user] = useAuthState(auth);
     console.log(user);
     const [items, setItems] = useState([]);
-    // const navigate = useNavigate();
+    
     useEffect(() => {
         const getItems = async () => {
             const email = user?.email;
-            const url = `http://localhost:5000/item?email=${email}`;
+            const url = `https://laptopstorebd.herokuapp.com/item?email=${email}`;
             const { data } = await axios.get(url);
             console.log(data);
             setItems(data)
-            // try {
-            //     const {data} = await axiosPrivate.get(url);
-            //     setItems(data);
-            // } catch (error) {
-            //     console.log(error.message);
-            //     if(error.response.status === 401 || error.response.status === 403){
-            //         signOut(auth)
-            //         // navigate('/login')
-            //     }
-            // }   
+               
         }
         getItems()
     }, [user])

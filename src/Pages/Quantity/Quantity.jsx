@@ -8,11 +8,12 @@ const Quantity = () => {
     const [product, setProduct] = SingleHookProduct(id);
 
     const ReStock = e => {
+        e.preventDefault();
         const quantity = parseInt(e.target.reStock.value) + parseInt(product.quantity);
 
         const updateRestock = { quantity };
         // console.log(updateRestock);
-        const url = `http://localhost:5000/update/${id}`;
+        const url = `https://laptopstorebd.herokuapp.com/update/${id}`;
         console.log(url);
         fetch(url, {
             method: 'PUT',
@@ -26,6 +27,7 @@ const Quantity = () => {
         })
             .then(response => response.json())
             .then(data => {
+                e.target.reset();
                 console.log(data);
 
             });
@@ -33,10 +35,11 @@ const Quantity = () => {
     }
 
     const handleQuantity = e => {
+        e.preventDefault();
         const quantity = e.target.quantity.value - 1;
         const updateQuantity = { quantity }
         console.log(updateQuantity);
-        const url = `http://localhost:5000/update/${id}`;
+        const url = `https://laptopstorebd.herokuapp.com/update/${id}`;
         fetch(url, {
             method: 'PUT',
             body: JSON.stringify(

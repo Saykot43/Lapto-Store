@@ -49,9 +49,7 @@ const ProductDetail = () => {
                     <Card.Text>
                         <p>Price: {product.price} $</p>
                     </Card.Text>
-                    <form onS>
-                    <Button onClick={() => handelDelivery(id)} className='text-center' variant="primary">Deliviery</Button>
-                    </form>
+                    
                 </Card.Body>
             </Card>
             </div>

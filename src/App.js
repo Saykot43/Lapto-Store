@@ -19,6 +19,7 @@ import ViewProduct from './Pages/ViewProduct/ViewProduct';
 import AddedItems from './Pages/AddedItems/AddedItems';
 import SignIn from './Pages/Accounts/SignIn'
 import SignUp from './Pages/Accounts/SignUp'
+import About from './Pages/About/About';
 toast.configure()
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
+        <Route path='/about' element={<About />} />
         <Route path='/login' element={<SignIn />} />
         <Route path='/register' element={<SignUp />} />
         <Route path='/blog' element={<Blog />} />

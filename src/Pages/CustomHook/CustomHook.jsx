@@ -7,8 +7,11 @@ export const CustomHook = () => {
     useEffect(() => {
         fetch('https://laptopstorebd.herokuapp.com/produts')
             .then(res => res.json())
-            .then(data => setProducts(data));
-    }, [])
+            .then(data => {
+                setProducts(data)
+                setIsreload(data)
+            });
+    }, [isReload])
     return [products, setProducts];
 }
 
