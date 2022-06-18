@@ -1,8 +1,8 @@
 # Client side github link
-https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-Saykot43
+https://github.com/Saykot43/Lapto-Store.git
 
 # Server side github link
-https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-Saykot43
+https://github.com/Saykot43/Laptot_warehouse_server
 
 # Live site link
 https://laptop-store-2d59d.web.app/
